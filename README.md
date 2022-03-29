@@ -1,2 +1,3 @@
 # hmi_picovoice
-Provides an hmi interface connecting to picovoice speech recognition
+
+Provides a hmi interface connecting to picovoice rhino speech recognition
