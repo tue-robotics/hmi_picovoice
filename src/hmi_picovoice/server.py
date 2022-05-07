@@ -26,11 +26,13 @@ class Server(AbstractHMIServer):
         rospy.loginfo(f"Server initialized (context_url={context_url}, require_endpoint={require_endpoint})")
 
     def _determine_answer(self, description, grammar, target, is_preempt_requested):
-        self._intent_client.send_goal(GetIntentGoal(
-            context_url=self._context_url,
-            require_endpoint=self._require_endpoint,
-            intents=[grammar]
-        ))
+        self._intent_client.send_goal(
+            GetIntentGoal(
+                context_url=self._context_url,
+                require_endpoint=self._require_endpoint,
+                intents=[grammar],
+            )
+        )
 
         r = rospy.Rate(self._rate)
         while not rospy.is_shutdown():
@@ -41,9 +43,13 @@ class Server(AbstractHMIServer):
 
             result = self._intent_client.get_result()
             if result is not None:
-                return HMIResult(
-                    semantics={kv.key: kv.value for kv in result.slots},
-                    sentence=result.intent
-                ) if result.is_understood else None
+                return (
+                    HMIResult(
+                        semantics={kv.key: kv.value for kv in result.slots},
+                        sentence=result.intent,
+                    )
+                    if result.is_understood
+                    else None
+                )
 
             r.sleep()
