@@ -1,5 +1,7 @@
 # hmi_picovoice
 
+[![CI](https://github.com/tue-robotics/hmi_picovoice/actions/workflows/main.yml/badge.svg)](https://github.com/tue-robotics/hmi_picovoice/actions/workflows/main.yml) [![Lint](https://github.com/tue-robotics/hmi_picovoice/actions/workflows/lint.yml/badge.svg)](https://github.com/tue-robotics/hmi_picovoice/actions/workflows/lint.yml)
+
 Provides a hmi interface connecting to picovoice rhino speech recognition.
 
 It depends on [`picovoice_driver`](https://github.com/reinzor/picovoice_ros) to interface with PicoVoice's backend.
