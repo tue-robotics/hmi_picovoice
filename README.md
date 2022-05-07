@@ -12,6 +12,10 @@ rosrun picovoice_driver picovoice_driver_rhino _access_key:=$PICOVOICE_KEY __ns:
 ```
 
 ```bash
+rosrun hmi_picovoice hmi_picovoice_node.py _context_url:=coffee_maker_linux __ns:=/robot/hmi
+```
+
+```bash
 rosrun hmi multi_client __name:=/robot/hmi
 ```
 
@@ -26,3 +30,8 @@ talker_id: ''
 sentence: "orderBeverage"
 semantics: "{\"size\": \"large\", \"beverage\": \"cappuccino\"}"
 ```
+
+## Parameters
+For `hmi_picovoice_node.py`:
+- `context_url` what model to use. **TODO**: Not sure where eg. the string `coffee_maker_linux` comes from
+- `require_endpoint` ["If set to False, Rhino does not require an endpoint (chunk of silence) before finishing inference"](https://picovoice.ai/docs/api/rhino-python/)
